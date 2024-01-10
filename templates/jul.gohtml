@@ -1,0 +1,29 @@
+{{define "jul"}}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="/static/jul.css" rel="stylesheet">
+    <title>Albums de JUL</title>
+</head>
+<body>
+<header class="header">
+<h1><a href="/" class="back-button">Retour</a> Albums de JUL</h1>
+</header>
+<ul>
+    {{ range . }}
+        <li>
+            <strong>Nom:</strong> {{ .Nom }}<br>
+            <strong>Sortie:</strong> {{ .DateSortie }}<br>
+            <strong>Nombre de son:</strong> {{ .TotalPistes }}<br>
+            {{ range $index, $image := .Image }}
+                {{ if eq $index 1 }}     
+                    <img src="{{ $image.URL }}" alt="Image">
+                {{end}}
+            {{end}}
+        </li>
+    {{end}}
+</ul>
+</body>
+</html>
+{{end}}

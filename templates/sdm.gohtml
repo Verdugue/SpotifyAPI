@@ -1,0 +1,27 @@
+{{define "sdm"}}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="/static/sdm.css" rel="stylesheet">
+    <title>Détails de la Musique</title>
+</head>
+<body>
+<div class="image-container">
+    <h1><a href="/" class="bouton-retour">Retour</a> Détails de la musique</h1>
+    <div class="sound-details">
+        <h2>Bolide allemand</h2>
+        <p><strong>Artiste:</strong> {{ range .Artistes }}{{ .Nom }} {{ end }}</p>
+        <p><strong>Sortie:</strong> {{ .Album.DateSortie }}</p>
+        <p><strong>Album:</strong> {{ .Album.Nom }}</p>
+        <p><a href="{{ .URLExterne.Spotify }}" target="_blank">Lien</a></p>
+        {{ range $index, $image := .Album.Image }}
+            {{ if eq $index 1 }}
+                <img src="{{ $image.URL }}" alt="Image">
+            {{end}}
+        {{end}}
+        </div>
+    </div>
+</body>
+</html>
+{{end}}
